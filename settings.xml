@@ -1,0 +1,43 @@
+<settings>
+  <servers>
+      <server>
+         <id>proxyboy</id>
+         <username>${jenkins}</username>
+         <password>${JENKINS_PASSWORD}</password>
+      </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <id>proxyboy</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://172.20.0.2:8081/repository/proxyboy/</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>jenkins</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <!--make the profile active all the time -->
+    <activeProfile>jenkins</activeProfile>
+  </activeProfiles>
+</settings>
